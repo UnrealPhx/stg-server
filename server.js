@@ -51,6 +51,27 @@ wss.on('connection', function connection(ws) {
           redis.set('server', null);
         }
       } break;
+      
+      // message: { server: ip, id: Asteroid, params: [0, 1, 2] }
+      case 'spawn': {
+        redis.get('server', function (err, result) {
+          if (!err && result) {
+            wss.clients.forEach(client => {
+              let clientIp = client._socket.remoteAddress.replace(/^.*:/, '');
+              if (result == clientIp) {
+                client.send({
+                  version: 1,
+                  type: 'spawn',
+                  message: {
+                    id: message.id,
+                    params: message.params || []
+                  }
+                });
+              }
+            });
+          }
+        });
+      } break;
     }
 
     console.log('received: %s', JSON.stringify(json));
