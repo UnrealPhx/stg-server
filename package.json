@@ -1,0 +1,31 @@
+{
+  "name": "stg-server",
+  "version": "1.0.0",
+  "description": "UE4: To The Cloud - STG Server as a node web socket server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UnrealPhx/stg-server.git"
+  },
+  "keywords": [
+    "stg",
+    "unreal",
+    "ws"
+  ],
+  "author": "Justin Walsh",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/UnrealPhx/stg-server/issues"
+  },
+  "homepage": "https://github.com/UnrealPhx/stg-server#readme",
+  "dependencies": {
+    "ioredis": "^4.6.2",
+    "ws": "^6.2.0"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.1"
+  }
+}
