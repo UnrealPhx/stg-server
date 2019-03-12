@@ -1,7 +1,7 @@
 const WebSocket = require('ws');
 const Redis = require('ioredis');
 
-const redis = new Redis();
+const redis = new Redis({ host: 'redis' });
 const wss = new WebSocket.Server({ port: 7379 });
 
 wss.on('connection', function connection(ws) {
