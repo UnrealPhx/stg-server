@@ -59,14 +59,14 @@ wss.on('connection', function connection(ws) {
             wss.clients.forEach(client => {
               let clientIp = client._socket.remoteAddress.replace(/^.*:/, '');
               if (result == clientIp) {
-                client.send({
+                client.send(JSON.stringify({
                   version: 1,
                   type: 'spawn',
                   message: {
                     id: message.id,
                     params: message.params || []
                   }
-                });
+                }));
               }
             });
           }
