@@ -51,6 +51,15 @@ wss.on('connection', function connection(ws) {
           redis.set('server', null);
         }
       } break;
+
+      // message: { event: hit, id: name, value: 1 }
+      case 'player': {
+        wss.clients.forEach(function each(client) {
+          if (client !== ws && client.readyState === WebSocket.OPEN) {
+            client.send(payload);
+          }
+        });
+      } break;
       
       // message: { server: ip, id: Asteroid, params: [0, 1, 2] }
       case 'spawn': {
